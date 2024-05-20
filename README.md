@@ -204,6 +204,12 @@ pnpm test
 pnpm serve:doc
 ```
 
+**Coverage**
+
+| File                                         | % Lines           | % Statements       | % Branches       | % Funcs          |
+![](https://github.com/code-423n4/2024-05-munchables/assets/47150934/1da09dd3-efd2-4740-b678-fe3ef0c72bbb")
+
+
 ## Slither
 
 See [slither.txt](https://github.com/code-423n4/2024-05-munchables/blob/main/slither.txt)
