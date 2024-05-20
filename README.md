@@ -32,7 +32,7 @@ A variety of factors influence the rewards earned, so players will have to be sm
 ## Links
 
 - **Previous audits:** We are currently working with Nethermind. The audit is not complete yet. All issues they have found have already been implemented though.
-- **Documentation:** <https://munchables.gitbook.io/munchables>
+- **Documentation:** [./guides](https://github.com/code-423n4/2024-05-munchables/tree/main/guides)
 - **Website:** <https://www.munchables.app/>
 - **X/Twitter:** <https://twitter.com/_munchables>\_
 - **Discord:** <https://discord.com/invite/munchables>
@@ -138,7 +138,7 @@ _See [out_of_scope.txt](https://github.com/code-423n4/2024-05-munchables/blob/ma
 | ERC721 used by the protocol             | No                                                                        |
 | ERC777 used by the protocol             | No                                                                        |
 | ERC1155 used by the protocol            | No                                                                        |
-| Chains the protocol will be deployed on | OtherBlast Mainnet                                                        |
+| Chains the protocol will be deployed on | Blast Mainnet                                                        |
 
 ### ERC20 token behaviors in scope
 
