@@ -32,7 +32,7 @@ A variety of factors influence the rewards earned, so players will have to be sm
 ## Links
 
 - **Previous audits:** We are currently working with Nethermind. The audit is not complete yet. All issues they have found have already been implemented though.
-- **Documentation:** [./guides](https://github.com/code-423n4/2024-05-munchables/tree/main/guides)
+- **Documentation:** [/guides/*.md](https://github.com/code-423n4/2024-05-munchables/tree/main/guides)
 - **Website:** <https://www.munchables.app/>
 - **X/Twitter:** <https://twitter.com/_munchables>\_
 - **Discord:** <https://discord.com/invite/munchables>
