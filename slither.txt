@@ -1,0 +1,246 @@
+INFO:Detectors:
+LockManager._lock(address,uint256,address,address) (src/managers/LockManager.sol#311-398) ignores return value by token_scope_0.transferFrom(_tokenOwner,address(this),_quantity) (src/managers/LockManager.sol#376)
+LockManager.unlock(address,uint256) (src/managers/LockManager.sol#401-427) ignores return value by token.transfer(msg.sender,_quantity) (src/managers/LockManager.sol#423)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+INFO:Detectors:
+LockManager.proposeUSDPrice(uint256,address[]) (src/managers/LockManager.sol#142-174) deletes ILockManager.USDUpdateProposal (src/interfaces/ILockManager.sol#60-69) which contains a mapping:
+	-delete usdUpdateProposal (src/managers/LockManager.sol#161)
+LockManager.disapproveUSDPrice(uint256) (src/managers/LockManager.sol#210-242) deletes ILockManager.USDUpdateProposal (src/interfaces/ILockManager.sol#60-69) which contains a mapping:
+	-delete usdUpdateProposal (src/managers/LockManager.sol#238)
+LockManager._execUSDPriceUpdate() (src/managers/LockManager.sol#506-527) deletes ILockManager.USDUpdateProposal (src/interfaces/ILockManager.sol#60-69) which contains a mapping:
+	-delete usdUpdateProposal (src/managers/LockManager.sol#525)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deletion-on-mapping-containing-a-structure
+INFO:Detectors:
+Reentrancy in LockManager._lock(address,uint256,address,address) (src/managers/LockManager.sol#311-398):
+	External calls:
+	- accountManager.forceHarvest(_lockRecipient) (src/managers/LockManager.sol#341)
+	- nftOverlord.addReveal(_lockRecipient,uint16(numberNFTs)) (src/managers/LockManager.sol#369)
+	- token_scope_0.transferFrom(_tokenOwner,address(this),_quantity) (src/managers/LockManager.sol#376)
+	State variables written after the call(s):
+	- lockedToken.remainder = remainder (src/managers/LockManager.sol#379)
+	LockManager.lockedTokens (src/managers/LockManager.sol#24) can be used in cross function reentrancies:
+	- LockManager.getLocked(address) (src/managers/LockManager.sol#430-458)
+	- LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487)
+	- LockManager.lockedTokens (src/managers/LockManager.sol#24)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+	- lockedToken.quantity += _quantity (src/managers/LockManager.sol#380)
+	LockManager.lockedTokens (src/managers/LockManager.sol#24) can be used in cross function reentrancies:
+	- LockManager.getLocked(address) (src/managers/LockManager.sol#430-458)
+	- LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487)
+	- LockManager.lockedTokens (src/managers/LockManager.sol#24)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+	- lockedToken.lastLockTime = uint32(block.timestamp) (src/managers/LockManager.sol#381)
+	LockManager.lockedTokens (src/managers/LockManager.sol#24) can be used in cross function reentrancies:
+	- LockManager.getLocked(address) (src/managers/LockManager.sol#430-458)
+	- LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487)
+	- LockManager.lockedTokens (src/managers/LockManager.sol#24)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+	- lockedToken.unlockTime = uint32(block.timestamp) + uint32(_lockDuration) (src/managers/LockManager.sol#382-384)
+	LockManager.lockedTokens (src/managers/LockManager.sol#24) can be used in cross function reentrancies:
+	- LockManager.getLocked(address) (src/managers/LockManager.sol#430-458)
+	- LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487)
+	- LockManager.lockedTokens (src/managers/LockManager.sol#24)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+	- playerSettings[_lockRecipient].lockDuration = _lockDuration (src/managers/LockManager.sol#387)
+	LockManager.playerSettings (src/managers/LockManager.sol#26) can be used in cross function reentrancies:
+	- LockManager.getPlayerSettings(address) (src/managers/LockManager.sol#496-500)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+Reentrancy in LockManager.unlock(address,uint256) (src/managers/LockManager.sol#401-427):
+	External calls:
+	- accountManager.forceHarvest(msg.sender) (src/managers/LockManager.sol#414)
+	State variables written after the call(s):
+	- lockedToken.quantity -= _quantity (src/managers/LockManager.sol#416)
+	LockManager.lockedTokens (src/managers/LockManager.sol#24) can be used in cross function reentrancies:
+	- LockManager.getLocked(address) (src/managers/LockManager.sol#430-458)
+	- LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487)
+	- LockManager.lockedTokens (src/managers/LockManager.sol#24)
+	- LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+INFO:Detectors:
+LockManager._lock(address,uint256,address,address).numberNFTs (src/managers/LockManager.sol#346) is a local variable never initialized
+LockManager._lock(address,uint256,address,address).remainder (src/managers/LockManager.sol#345) is a local variable never initialized
+LockManager.getLocked(address).tmpLockedToken (src/managers/LockManager.sol#439) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+INFO:Detectors:
+LockManager.configureLockdrop(ILockManager.Lockdrop) (src/managers/LockManager.sol#98-112) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _lockdropData.end < block.timestamp (src/managers/LockManager.sol#101)
+LockManager.setLockDuration(uint256) (src/managers/LockManager.sol#245-272) uses timestamp for comparisons
+	Dangerous comparisons:
+	- lockedTokens[msg.sender][tokenContract].quantity > 0 (src/managers/LockManager.sol#254)
+	- uint32(block.timestamp) + uint32(_duration) < lockedTokens[msg.sender][tokenContract].unlockTime (src/managers/LockManager.sol#257-258)
+LockManager._lock(address,uint256,address,address) (src/managers/LockManager.sol#311-398) uses timestamp for comparisons
+	Dangerous comparisons:
+	- lockdrop.start <= uint32(block.timestamp) && lockdrop.end >= uint32(block.timestamp) (src/managers/LockManager.sol#353-354)
+LockManager.unlock(address,uint256) (src/managers/LockManager.sol#401-427) uses timestamp for comparisons
+	Dangerous comparisons:
+	- lockedToken.unlockTime > uint32(block.timestamp) (src/managers/LockManager.sol#410)
+LockManager.getLockedWeightedValue(address) (src/managers/LockManager.sol#461-487) uses timestamp for comparisons
+	Dangerous comparisons:
+	- lockedTokens[_player][configuredTokenContracts[i]].quantity > 0 && configuredTokens[configuredTokenContracts[i]].active (src/managers/LockManager.sol#468-470)
+LockManager._execUSDPriceUpdate() (src/managers/LockManager.sol#506-527) uses timestamp for comparisons
+	Dangerous comparisons:
+	- usdUpdateProposal.approvalsCount >= APPROVE_THRESHOLD && usdUpdateProposal.disapprovalsCount < DISAPPROVE_THRESHOLD (src/managers/LockManager.sol#508-509)
+	- i < updateTokensLength (src/managers/LockManager.sol#512)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Different versions of Solidity are used:
+	- Version used: ['0.8.25', '^0.8.0', '^0.8.20', '^0.8.25']
+	- 0.8.25 (src/config/BaseConfigStorage.sol#2)
+	- 0.8.25 (src/config/BaseConfigStorageUpgradeable.sol#2)
+	- 0.8.25 (src/distributors/FundTreasuryDistributor.sol#2)
+	- 0.8.25 (src/interfaces/IAccountManager.sol#2)
+	- 0.8.25 (src/interfaces/IBaseBlastManager.sol#2)
+	- 0.8.25 (src/interfaces/IBonusManager.sol#2)
+	- 0.8.25 (src/interfaces/IClaimManager.sol#2)
+	- 0.8.25 (src/interfaces/IDistributor.sol#2)
+	- 0.8.25 (src/interfaces/IERC20YieldClaimable.sol#2)
+	- 0.8.25 (src/interfaces/IHoldsGovernorship.sol#2)
+	- 0.8.25 (src/interfaces/ILockManager.sol#2)
+	- 0.8.25 (src/interfaces/IMigrationManager.sol#2)
+	- 0.8.25 (src/interfaces/IMunchNFT.sol#2)
+	- 0.8.25 (src/interfaces/IMunchToken.sol#2)
+	- 0.8.25 (src/interfaces/IMunchadexManager.sol#2)
+	- 0.8.25 (src/interfaces/INFTAttributesManager.sol#2)
+	- 0.8.25 (src/interfaces/INFTOverlord.sol#2)
+	- 0.8.25 (src/interfaces/IRewardsManager.sol#2)
+	- 0.8.25 (src/interfaces/ISnuggeryManager.sol#2)
+	- 0.8.25 (src/libraries/MunchablesCommonLib.sol#2)
+	- 0.8.25 (src/managers/AccountManager.sol#2)
+	- 0.8.25 (src/managers/BaseBlastManager.sol#2)
+	- 0.8.25 (src/managers/BaseBlastManagerUpgradeable.sol#2)
+	- 0.8.25 (src/managers/BonusManager.sol#2)
+	- 0.8.25 (src/managers/ClaimManager.sol#2)
+	- 0.8.25 (src/managers/LockManager.sol#2)
+	- 0.8.25 (src/managers/MigrationManager.sol#2)
+	- 0.8.25 (src/managers/MunchadexManager.sol#2)
+	- 0.8.25 (src/managers/NFTAttributeManagerV1.sol#2)
+	- 0.8.25 (src/managers/PrimordialManager.sol#2)
+	- 0.8.25 (src/managers/RewardsManager.sol#2)
+	- 0.8.25 (src/managers/SnuggeryManager.sol#2)
+	- 0.8.25 (src/mock/MockAccountManager.sol#2)
+	- 0.8.25 (src/mock/MockClaimManager.sol#2)
+	- 0.8.25 (src/mock/MockLockManager.sol#2)
+	- 0.8.25 (src/mock/MockMigrationManager.sol#2)
+	- 0.8.25 (src/mock/MockMunchNFT.sol#2)
+	- 0.8.25 (src/mock/MockMunchadexManager.sol#2)
+	- 0.8.25 (src/mock/MockNFTAttributeManagerV1.sol#2)
+	- 0.8.25 (src/mock/MockNFTOverlord.sol#2)
+	- 0.8.25 (src/mock/MockPrimordialManager.sol#2)
+	- 0.8.25 (src/mock/MockRNGProxy.sol#2)
+	- 0.8.25 (src/mock/MockRNGRequester.sol#2)
+	- 0.8.25 (src/mock/MockRewardsManager.sol#2)
+	- 0.8.25 (src/mock/MockSnuggeryManager.sol#2)
+	- 0.8.25 (src/overlords/NFTOverlord.sol#2)
+	- 0.8.25 (src/proxy/ProxyFactory.sol#2)
+	- 0.8.25 (src/tokens/MunchNFT.sol#2)
+	- 0.8.25 (src/tokens/MunchToken.sol#2)
+	- 0.8.25 (src/tokens/TestERC20Token.sol#2)
+	- ^0.8.0 (node_modules/@api3/airnode-protocol/contracts/rrp/interfaces/IAirnodeRrpV0.sol#2)
+	- ^0.8.0 (node_modules/@api3/airnode-protocol/contracts/rrp/interfaces/IAuthorizationUtilsV0.sol#2)
+	- ^0.8.0 (node_modules/@api3/airnode-protocol/contracts/rrp/interfaces/ITemplateUtilsV0.sol#2)
+	- ^0.8.0 (node_modules/@api3/airnode-protocol/contracts/rrp/interfaces/IWithdrawalUtilsV0.sol#2)
+	- ^0.8.0 (node_modules/@api3/airnode-protocol/contracts/rrp/requesters/RrpRequesterV0.sol#2)
+	- ^0.8.0 (src/config/ConfigStorage.sol#2)
+	- ^0.8.0 (src/interfaces/IConfigNotifiable.sol#2)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/access/AccessControlUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/ERC721Upgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721PausableUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/ReentrancyGuardUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/access/AccessControl.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/access/IAccessControl.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/access/Ownable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/IERC1967.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/IERC4906.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/IERC721.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/draft-IERC1822.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol#3)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/Proxy.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Pausable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Enumerable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Address.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Context.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Pausable.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#5)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Strings.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#4)
+	- ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol#4)
+	- ^0.8.20 (src/tokens/OldMunchNFT.sol#2)
+	- ^0.8.25 (src/interfaces/IBlast.sol#2)
+	- ^0.8.25 (src/interfaces/IConfigStorage.sol#2)
+	- ^0.8.25 (src/interfaces/IPrimordialManager.sol#2)
+	- ^0.8.25 (src/interfaces/IRNGProxy.sol#2)
+	- ^0.8.25 (src/interfaces/IRNGProxySelfHosted.sol#2)
+	- ^0.8.25 (src/libraries/SignatureVerifier.sol#2)
+	- ^0.8.25 (src/mock/MockBlast.sol#2)
+	- ^0.8.25 (src/mock/MockConfigNotifiable.sol#2)
+	- ^0.8.25 (src/rng/BaseRNGProxy.sol#2)
+	- ^0.8.25 (src/rng/RNGProxyAPI3.sol#2)
+	- ^0.8.25 (src/rng/RNGProxySelfHosted.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used
+INFO:Detectors:
+LockManager._lock(address,uint256,address,address) (src/managers/LockManager.sol#311-398) has a high cyclomatic complexity (13).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+INFO:Detectors:
+Pragma version0.8.25 (src/managers/LockManager.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.8.18.
+solc-0.8.25 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Parameter LockManager.configureLockdrop(ILockManager.Lockdrop)._lockdropData (src/managers/LockManager.sol#99) is not in mixedCase
+Parameter LockManager.configureToken(address,ILockManager.ConfiguredToken)._tokenContract (src/managers/LockManager.sol#116) is not in mixedCase
+Parameter LockManager.configureToken(address,ILockManager.ConfiguredToken)._tokenData (src/managers/LockManager.sol#117) is not in mixedCase
+Parameter LockManager.setUSDThresholds(uint8,uint8)._approve (src/managers/LockManager.sol#130) is not in mixedCase
+Parameter LockManager.setUSDThresholds(uint8,uint8)._disapprove (src/managers/LockManager.sol#131) is not in mixedCase
+Parameter LockManager.proposeUSDPrice(uint256,address[])._price (src/managers/LockManager.sol#143) is not in mixedCase
+Parameter LockManager.proposeUSDPrice(uint256,address[])._contracts (src/managers/LockManager.sol#144) is not in mixedCase
+Parameter LockManager.approveUSDPrice(uint256)._price (src/managers/LockManager.sol#178) is not in mixedCase
+Parameter LockManager.disapproveUSDPrice(uint256)._price (src/managers/LockManager.sol#211) is not in mixedCase
+Parameter LockManager.setLockDuration(uint256)._duration (src/managers/LockManager.sol#245) is not in mixedCase
+Parameter LockManager.lockOnBehalf(address,uint256,address)._tokenContract (src/managers/LockManager.sol#276) is not in mixedCase
+Parameter LockManager.lockOnBehalf(address,uint256,address)._quantity (src/managers/LockManager.sol#277) is not in mixedCase
+Parameter LockManager.lockOnBehalf(address,uint256,address)._onBehalfOf (src/managers/LockManager.sol#278) is not in mixedCase
+Parameter LockManager.lock(address,uint256)._tokenContract (src/managers/LockManager.sol#298) is not in mixedCase
+Parameter LockManager.lock(address,uint256)._quantity (src/managers/LockManager.sol#299) is not in mixedCase
+Parameter LockManager.unlock(address,uint256)._tokenContract (src/managers/LockManager.sol#402) is not in mixedCase
+Parameter LockManager.unlock(address,uint256)._quantity (src/managers/LockManager.sol#403) is not in mixedCase
+Parameter LockManager.getLocked(address)._player (src/managers/LockManager.sol#431) is not in mixedCase
+Parameter LockManager.getLockedWeightedValue(address)._player (src/managers/LockManager.sol#462) is not in mixedCase
+Parameter LockManager.getConfiguredToken(address)._tokenContract (src/managers/LockManager.sol#491) is not in mixedCase
+Parameter LockManager.getPlayerSettings(address)._player (src/managers/LockManager.sol#497) is not in mixedCase
+Variable LockManager.APPROVE_THRESHOLD (src/managers/LockManager.sol#16) is not in mixedCase
+Variable LockManager.DISAPPROVE_THRESHOLD (src/managers/LockManager.sol#18) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Reentrancy in LockManager.unlock(address,uint256) (src/managers/LockManager.sol#401-427):
+	External calls:
+	- address(msg.sender).transfer(_quantity) (src/managers/LockManager.sol#420)
+	Event emitted after the call(s):
+	- Unlocked(msg.sender,_tokenContract,_quantity) (src/managers/LockManager.sol#426)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+INFO:Slither:. analyzed (120 contracts with 94 detectors), 44 result(s) found
