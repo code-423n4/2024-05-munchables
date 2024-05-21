@@ -134,7 +134,6 @@ _See [out_of_scope.txt](https://github.com/code-423n4/2024-05-munchables/blob/ma
 | Question                                | Answer                                                                    |
 | --------------------------------------- | ------------------------------------------------------------------------- |
 | ERC20 used by the protocol              | USDB, WETH, (assume we can add more to the future for use in LockManager) |
-| Test coverage                           | 57,59%                                                                    |
 | ERC721 used by the protocol             | No                                                                        |
 | ERC777 used by the protocol             | No                                                                        |
 | ERC1155 used by the protocol            | No                                                                        |
@@ -204,11 +203,7 @@ pnpm test
 pnpm serve:doc
 ```
 
-**Coverage**
-
-| File                                         | % Lines           | % Statements       | % Branches       | % Funcs          |
-![](https://github.com/code-423n4/2024-05-munchables/assets/47150934/1da09dd3-efd2-4740-b678-fe3ef0c72bbb")
-
+Most of the relevant tests for this contest are in typescript under [tests/managers/LockManager/*.test.ts](https://github.com/code-423n4/2024-05-munchables/tree/main/tests/managers/LockManager)
 
 ## Slither
 
