@@ -1,0 +1,1557 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q2-2024 / munchables-may22
+==============================================================
+
+[05/21/2024 18:19] knownfactc4_29311 (pinned)
+👋 Hello and welcome to the audit channel for the $20,000 in USDC **Munchables **audit!
+
+📆 Audit opens 05/22/2024 20:00 (20:00 UTC) and runs through 05/27/2024 20:00 (20:00 UTC) (5 days).
+
+Please give a warm welcome to the **Munchables** team, particularly @0xinsanity, who will be available for questions either here in the channel or via a PRIVATE thread in the EST timezone. 
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/audits/2024-05-munchables
+
+
+[05/21/2024 18:20] knownfactc4_29311
+Pinned a message.
+
+
+[05/21/2024 18:36] 0xinsanity
+👋
+
+{Reactions}
+👍 (2) 👋 (15) 
+
+[05/22/2024 20:02] C4 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Reminder: all [Automated Findings / Publicly Known Issues](https://github.com/code-423n4/2024-05-munchables#automated-findings--publicly-known-issues) are out of scope and ineligible for awards.
+
+{Embed}
+https://github.com/code-423n4/2024-05-munchables
+GitHub - code-423n4/2024-05-munchables
+Contribute to code-423n4/2024-05-munchables development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/021ae13a-1040-4787-8ea1-b753980a4a28-8E9CB
+
+
+[05/22/2024 20:04] 0xsorrynotsorry
+Pinned a message.
+
+{Reactions}
+thankyou 
+
+[05/22/2024 20:04] realfakepicnic
+Excited! https://x.com/code4rena/status/1793371849151349098
+
+{Embed}
+https://twitter.com/code4rena/status/1793371849151349098
+Code4rena (@code4rena) on X
+📣 NOW LIVE: $20,000 USDC @_munchables_ competitive audit!
+ 
+5 days to secure 413 SLoC and receive top prizes for the most unique, high severity findings 👇
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/YZE8-EOC15pUEO2_-A1888.jpg%3Alarge
+Twitter
+
+
+[05/22/2024 20:04] knownfactc4_29311 (pinned)
+🤖 **Documentation bot assistance:** For general questions about the codebase, give our documentation bot a try, by tagging @Docs Wolf in any thread (private or public) and asking your question. The bot will make its best attempt to answer based on the codebase and documentation, and link you to relevant resources.
+
+
+[05/22/2024 20:04] knownfactc4_29311
+Pinned a message.
+
+
+[05/22/2024 20:37] uaarrr
+if only the lockmanager is in scope, does the functions of the inherited contracts are in scope too in any circumstance ?  i ask in general not only for this contest
+
+
+[05/22/2024 20:39] 0xinsanity
+We're only interested in the LockManager contract, you can assume the inherited contracts work as intended
+
+{Reactions}
+👍 (4) 
+
+[05/22/2024 21:47] 0xdice91
+@0xinsanity 
+Are bugs resulting from token behaviors for tokens outside USDB & WETH in scope?
+
+
+[05/22/2024 21:47] 0xinsanity
+No
+
+
+[05/23/2024 02:15] petro_1912
+are tokens that has high decimals( > 18) supported ?
+
+
+[05/23/2024 02:22] dontonka
+this has been deployed on Blast testnet (https://sepolia.blast.io) ?
+
+
+[05/23/2024 02:32] comradektg
+Hi @0xinsanity, command 'pnpm build' failed with this error "Contract name "IAirnodeRrpV0" must be unique.", any idea why?
+
+
+[05/23/2024 02:34] 0xinsanity
+no
+
+
+[05/23/2024 02:34] 0xinsanity
+we have some testnet versions that are deployed but its not necessarily true that they are the most up-to-date. you should deploy versions yourself for the latest contract instanaces
+
+{Reactions}
+✅ 
+
+[05/23/2024 02:35] 0xinsanity
+Make sure you are on the proper Node version
+Make sure you run generate first
+
+If those dont fix it, pls dm me
+
+
+[05/23/2024 02:37] comradektg
+Dm you !
+
+
+[05/23/2024 02:38] comradektg
+@0xinsanity please allow me to message you
+
+
+[05/23/2024 02:38] 0xinsanity
+you should be able to dm me via tickets here
+
+
+[05/23/2024 02:38] 0xinsanity
+shouldnt need to directly dm me
+
+
+[05/23/2024 02:39] comradektg
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/Screenshot_2024-05-23_at_09.39.09-61818.png
+
+
+[05/23/2024 02:39] comradektg
+@0xinsanity this is the screenshot, my node version is v20.13.1
+
+
+[05/23/2024 02:40] 0xinsanity
+you should be running `pnpm run generate`
+
+
+[05/23/2024 02:40] 0xinsanity
+sorry wait
+
+
+[05/23/2024 02:40] 0xinsanity
+have you run build?
+
+
+[05/23/2024 02:40] 0xinsanity
+`pnpm run build`?
+
+
+[05/23/2024 02:41] 0xinsanity
+its possible your foundry submodules arent installed
+
+
+[05/23/2024 02:42] comradektg
+@0xinsanity Yes I did, in your package.json config, the command "pnpm run build" will run "pnpm wagmi generate" and it failed with 'Contract name "IAirnodeRrpV0" must be unique.'
+
+
+[05/23/2024 02:43] comradektg
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/Screenshot_2024-05-23_at_09.42.24-5498D.png
+
+
+[05/23/2024 02:45] 0xinsanity
+what version of foundry do you have
+
+
+[05/23/2024 02:46] comradektg
+@0xinsanity this one "forge 0.2.0 (2d87c0c 2023-08-04T00:29:51.672502000Z"
+
+
+[05/23/2024 02:46] 0xinsanity
+harumph quite strange hmm
+
+
+[05/23/2024 02:47] 0xinsanity
+ok u can friend request me now and we can just take it to normal dms cuz i dont want to bog down this channel
+
+
+[05/23/2024 02:50] comradektg
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/Screenshot_2024-05-23_at_09.49.46-B2BD2.png
+
+
+[05/23/2024 02:50] comradektg
+@0xinsanity  still cannot friend you
+
+
+[05/23/2024 02:50] 0xinsanity
+hb now?
+
+
+[05/23/2024 02:51] comradektg
+Got it, thank you 😄
+
+
+[05/23/2024 04:47] _karanel
+```All trusted roles in the protocol
+N/A```
+
+Does this mean admin is not a trusted role?
+
+
+[05/23/2024 05:48] pfapostol
+Same error.
+
+Seems to be windows related, arch linux runs without error
+
+{Reactions}
+🔥 
+
+[05/23/2024 06:05] cholakovv
+@0xinsanity 1 munchable NFT == 1 locked ETH, right?
+
+
+[05/23/2024 06:07] thatunemployedfren
+```Running tests that match **/*.test.ts
+node:internal/test_runner/harness:44
+      throw err;
+      ^
+
+Error: Anvil exited: thread 'main' panicked at /home/runner/work/foundry/foundry/crates/anvil/src/config.rs:1034:14:
+Failed to get fork block: Transport(Custom(reqwest::Error { kind: Request, url: Url { scheme: "http", cannot_be_a_base: false, username: "", password: None, host: Some(Ipv4(127.0.0.1)), port: Some(8545), path: "/", query: None, fragment: None }, source: Error { kind: Connect, source: Some(ConnectError("tcp connect error", Os { code: 111, kind: ConnectionRefused, message: "Connection refused" })) } }))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+    at EventEmitter.onExit (file:///home/ths/c/2024-05-munchables/node_modules/.pnpm/@viem+anvil@0.0.9/node_modules/@viem/anvil/dist/esm/anvil/createAnvil.js:84:35)
+    at EventEmitter.emit (node:events:518:28)
+    at EventEmitter.emit (node:domain:488:12)
+    at ChildProcess.<anonymous> (file:///home/ths/c/2024-05-munchables/node_modules/.pnpm/@viem+anvil@0.0.9/node_modules/@viem/anvil/dist/esm/anvil/createAnvil.js:115:25)
+    at ChildProcess.emit (node:events:530:35)
+    at ChildProcess.emit (node:domain:488:12)
+    at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+
+Node.js v20.12.2
+ ELIFECYCLE  Command failed with exit code 7.
+ ELIFECYCLE  Test failed. See above for more details.
+``` can I get some help here? anyone?
+
+
+[05/23/2024 10:07] gumgumzum
+This looks like you're missing rpc config
+
+
+[05/23/2024 10:20] maushish
+@0xinsanity any issues regarding tokens are in scope or not? coz in docs its clearly mentioned they are but your above message says only USDB and WETH tokens are in scope
+
+
+[05/23/2024 10:49] evokid
+I will grab some soda with lemon
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/image-C88FD.png
+
+
+[05/23/2024 11:13] 0xinsanity
+admin is a trusted role
+
+
+[05/23/2024 11:13] 0xinsanity
+yes
+
+{Reactions}
+👍 
+
+[05/23/2024 11:13] 0xinsanity
+i would check your version number and make sure you are correcrtly connecting to a blast sepolia rpc
+
+
+[05/23/2024 11:14] 0xinsanity
+just usdb and weth
+
+{Reactions}
+👍 
+
+[05/23/2024 12:09] sp1cymeatball
+@0xinsanity hi! What are the benefits of longer lock times?
+
+
+[05/23/2024 12:21] 0xinsanity
+in the context of the broader system. it gives you more bonuses
+
+
+[05/23/2024 12:21] 0xinsanity
+but not relevant for this audit
+
+{Reactions}
+thankyou 
+
+[05/23/2024 12:51] dontonka
+users with Role.PriceFeed_X role I assume are trusted ?
+
+
+[05/23/2024 12:54] 0xinsanity
+yes
+
+
+[05/23/2024 13:06] snake_eaterr148
+Any tips on how to deploy this locally to experiment with it?
+
+
+[05/23/2024 13:06] 0xinsanity
+Should be fairly simple as long as your env is setup properly
+
+
+[05/23/2024 13:07] 0xinsanity
+should be able to just run `pnpm run deploy`
+
+
+[05/23/2024 13:08] snake_eaterr148
+what exactly would I be deploying to. Locally I mean
+
+
+[05/23/2024 13:09] 0xinsanity
+you should create a local anvil clone with fork-url specified to a blast sepolia rpc
+
+
+[05/23/2024 13:09] snake_eaterr148
+Thanks!
+
+
+[05/23/2024 13:27] thecoderfresk
+Does tokens with less than 18 decimals supported ?
+
+
+[05/23/2024 13:57] 0xinsanity
+it should work with tokens less than 18 decimals
+
+
+[05/23/2024 16:06] snake_eaterr148
+Does the deploy script deploy ERC20 contracts too? i.e. usdb and weth
+
+
+[05/23/2024 16:11] snake_eaterr148
+Yeah it does
+
+
+[05/23/2024 16:14] 0xinsanity
+there are test tokens for some of our unit tests but they dont deploy the usdb and weth tokens
+
+
+[05/23/2024 16:14] 0xinsanity
+they are assigned
+
+
+[05/23/2024 20:22] avoloder
+What would be the value of MaxLockDuration?
+
+
+[05/23/2024 20:37] 0xakira1
+Does anyone know how to do debugging with console.log directly in contract? When importing `forge-std/console.sol` and running `pnpm tests` it does not output to console
+
+
+[05/23/2024 21:19] 0xinsanity
+the javascript code doesn’t support that, i advise replicating the functionality of the test into foundry or using other means to debug
+
+
+[05/23/2024 21:20] 0xinsanity
+90 days
+
+
+[05/23/2024 22:38] th3l1ghtd3m0n
+Is the `startReveal()` function that users call to reveal Munchables gained from locking tokens in the `NFTOverlord` contract?
+
+
+[05/23/2024 22:59] mctoady
+You can still run ‘foundry test’ once you’ve built with pnpm and you’ll get the logs
+
+
+[05/23/2024 23:47] 0xinsanity
+yes but irrelevant for this audit
+
+
+[05/24/2024 00:02] th3l1ghtd3m0n
+Thanks!
+
+
+[05/24/2024 00:12] yotov721
+Is it known who will judge the contest or is it revealed once it is over ?
+
+
+[05/24/2024 00:16] yotov721
+Asking because there is some info in the READme and the sponsor says the reverse. Not sure if it will be a valid submission 🤔
+
+
+[05/24/2024 12:23] rouhsamad
+Hi
+what is the source of the price from which price feed roles obtain their data?
+
+
+[05/24/2024 12:53] 0xinsanity
+assume trusted sources
+
+
+[05/24/2024 14:36] thebrittfactor
+Judges will ultimately have the final decision. More [here](https://docs.code4rena.com/structure/frequently-asked-questions#do-judges-have-the-final-say). 
+> If wardens have fact-based evidence of a vulnerability's existence, they are welcome to submit.
+
+{Reactions}
+❤️ 
+
+[05/24/2024 16:48] snake_eaterr148
+what is meant by this, taken from the main invariants sections:
+"Assume it's intentional that setLockDuration resets all of the existing lock token durations."
+
+
+[05/24/2024 17:08] avoloder
+It means that the duration set with the *#setLockDuration* owerwrites the lock duration of every token that you locked with *#lock* function
+
+
+[05/24/2024 17:43] th3l1ghtd3m0n
+What is the maximum lock duration?
+
+
+[05/24/2024 17:47] unique0x0
+90 days
+
+
+[05/24/2024 17:50] avoloder
+Can someone please explain what the Lockdrop is actually for? Is this the period in which you are able to lock your tokens?
+
+
+[05/24/2024 18:05] 0xinsanity
+no
+
+
+[05/24/2024 18:05] 0xinsanity
+you can lock your tokens at any point
+
+
+[05/24/2024 18:06] 0xinsanity
+the lockdrop period is specifically for nft reveals and to set minimum and maximum lock times
+
+
+[05/24/2024 18:06] 0xinsanity
+to clarify, people should still be able to lock at any point regardless if there is a lockdrop event
+
+{Reactions}
+👍 (2) 
+
+[05/24/2024 19:12] rouhsamad
+hey @0xinsanity can you please accept my firend request if possible or accept my dms
+
+
+[05/24/2024 22:26] 0xinsanity
+can you send a ticket @rsam_eth i can respond there
+
+{Reactions}
+👍 
+
+[05/24/2024 23:06] sovaslava9
+What does mean arg contracts  in proposeUSDPrice() function?
+
+
+[05/24/2024 23:52] 0xinsanity
+can you send the code you are referring to
+
+
+[05/25/2024 03:20] dontonka
+it's simply an array of address (address[] calldata _contracts). 🤔
+
+
+[05/25/2024 03:40] 0xinsanity
+it’s the token contracts that the price update applies to
+
+
+[05/25/2024 09:08] 0xarav
+Hi @0xinsanity 
+could you check the thread ser ?
+
+
+[05/25/2024 09:58] 0xinsanity
+yes
+
+
+[05/25/2024 09:58] 0xinsanity
+guys to be clear i am only available during est time
+
+
+[05/25/2024 10:39] snake_eaterr148
+If I make a report, when will I get a response? Only at the end of audit?
+
+
+[05/25/2024 13:24] .tedox
+are the pricefeed roles and admin role trusted?
+
+
+[05/25/2024 13:32] .tedox
+also is it only one address per PriceFeed role?
+
+
+[05/25/2024 13:32] snake_eaterr148
+@0xinsanity said so yes
+
+{Reactions}
+❤️ 
+
+[05/25/2024 13:33] snake_eaterr148
+I think so, but you should wait for @0xinsanity to give you a definite answer
+
+
+[05/25/2024 13:40] 0xinsanity
+yes
+
+
+[05/25/2024 15:55] avoloder
+@0xinsanity  What do users get if they lock their tokens outside of the lockdrop period (since they don't get NFTs outside the Lockdrop period)?
+
+
+[05/25/2024 15:56] maushish
+nothing just normal schnibbles
+
+
+[05/25/2024 15:58] avoloder
+Ok, but should the minLockDuration always be respected or is this only relevant for NFTs?
+
+
+[05/25/2024 16:02] sancybars
+The NFTs are the munchables? And the schinbbles are used to fed them, if the player don't get NFT what will the schinbbles be used for?
+
+
+[05/25/2024 16:04] maushish
+acc to 0xinsanity `the lockdrop period is specifically for nft reveals and to set minimum and maximum lock times ` i suppose its only relevant for NFTs
+
+
+[05/25/2024 16:11] maushish
+they will be harvested like normally
+
+
+[05/25/2024 16:11] maushish
+i might be wrong here @0xinsanity  let me know
+
+
+[05/25/2024 16:33] paprikrumplikas
+Will address(0) be added to configuredTokens?
+
+
+[05/25/2024 17:41] 0xeeyore
+Based on the tests it is used to configure ETH
+
+{Reactions}
+❤️ 
+
+[05/25/2024 17:43] ahmedaghadi
+I can't run tests. This is the gist of error I'm getting:
+```bash
+Manually notify addresses 1/3 [0, 5]
+node:internal/test_runner/harness:43
+      throw err;
+      ^
+
+TransactionExecutionError: The request took too long to respond.
+
+URL: http://127.0.0.1:8546
+Request body: {"method":"eth_sendTransaction","params":[{"data":"0xe95b42e400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005","from":"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266","to":"0xb868cc77a95a65f42611724af05aa2d3b6ec05f2"}]}
+ 
+Request Arguments:
+  from:  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  to:    0xb868cc77a95a65f42611724af05aa2d3b6ec05f2
+  data:  0xe95b42e400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005
+
+Details: The request timed out.
+Version: viem@2.9.5
+```
+
+
+[05/25/2024 17:53] ahmedaghadi
+Error is on `deployments/actions/configure-contracts.ts`:
+```ts
+for (let i = 0; i < numIterations; i++) {
+  _log(`Manually notify addresses ${i + 1}/${numIterations} [${i * 5}, ${i * 5 + 5}]`);
+-> const configStorageNotify = await deployedContracts.configStorage.contract.write.manualNotify([
+    i * 5,
+    5,
+  ]);
+  await checkTxSuccess(publicClient, configStorageNotify, logging);
+}
+```
+
+
+[05/25/2024 17:55] 0xeeyore
+you can check foundry tests where they also use address(0) for ETH `forge test`
+
+
+[05/25/2024 18:03] donkicha
+Hey guys!
+
+I wrote a test for the `approveUSDPrice` price, but it reverts at the `setUp` function:
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/message-D7308.txt
+
+
+[05/25/2024 18:03] donkicha
+```
+donko@DESKTOP-L2NMHUV:~/echidna/2024-05-munchables/src/test$ forge test --match-path src/test/LockManager.t.sol -vvvv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for src/test/LockManager.t.sol:LockManagerTest
+[FAIL. Reason: setup failed: EvmError: Revert] setUp() (gas: 0)
+Traces:
+  [106417] LockManagerTest::setUp()
+    ├─ [69631] → new <unknown>@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   ├─ [0] 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2::getAddress(3) [staticcall]
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Revert] 0 bytes of code
+    └─ ← [Revert] EvmError: Revert
+
+Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 497.05µs (0.00ns CPU time)
+
+Ran 1 test suite in 916.82ms (497.05µs CPU time): 0 tests passed, 1 failed, 0 skipped (1 total tests)
+
+Failing tests:
+Encountered 1 failing test in src/test/LockManager.t.sol:LockManagerTest
+[FAIL. Reason: setup failed: EvmError: Revert] setUp() (gas: 0)
+
+Encountered a total of 1 failing tests, 0 tests succeeded
+donko@DESKTOP-L2NMHUV:~/echidna/2024-05-munchables/src/test$ 
+
+
+```
+
+
+[05/25/2024 18:04] donkicha
+I think the problem is that I provided just a random address to the LockManager in my test file
+
+
+[05/25/2024 18:04] donkicha
+What do you think?
+
+
+[05/25/2024 18:05] donkicha
+I hope someone will reply to me!
+
+
+[05/25/2024 18:11] 0xeeyore
+Recheck on the src/test/SpeedRun.t.sol it has  deployContracts(); function that will setUp all for you
+
+
+[05/25/2024 18:23] 0xinsanity
+we use the getLockedWeightedValue to calculate their schnibble emissions
+
+
+[05/25/2024 19:08] avoloder
+Thanks! Can you also address this question please?
+ https://discord.com/channels/810916927919620096/1242163386058276985/1243956290393342084
+
+
+[05/25/2024 19:13] 0xinsanity
+yes
+
+
+[05/26/2024 04:35] 0xdimo
+@0xinsanity what's the reason behind going with the PriceFeed role and proposals way of determining an asset's USD value instead of using an oracle or other alternatives? 🤔
+
+{Reactions}
+👀 
+
+[05/26/2024 06:37] donkicha
+Does someone tried to write some Echidna tests?
+
+I tried this:
+
+```
+pragma solidity 0.8.25;
+
+import "./LockManager.sol";
+import "./ILockManager.sol";
+import "./BaseConfigStorage.sol";
+
+
+contract EchidnaSolution {
+
+    LockManager lockManager;
+
+    ILockManager.Lockdrop public lockdrop;
+    constructor(address _configStorage) {
+        lockManager = new LockManager(_configStorage);
+    }
+
+    function testConfigureLockdrop(
+        ILockManager.Lockdrop calldata _lockdropData
+    ) public {
+
+        require(_lockdropData.end < block.timestamp);
+
+        require(_lockdropData.start >= _lockdropData.end);
+
+        try lockManager.configureLockdrop(_lockdropData) {
+            // Post-condition
+            assert(_lockdropData.start == lockdrop.start);
+            assert(_lockdropData.end == lockdrop.end);
+            assert(_lockdropData.minLockDuration == lockdrop.minLockDuration);
+        } catch (bytes memory err) {
+            // Post-condition
+            assert(false);
+        }
+    }
+}
+
+```
+
+
+But it is not successful:
+
+```
+ethsec@e934c081ac1f:/home/training/src/echidna$ echidna echidna_tests.sol --config config.yaml 
+Warning: unused option: contracts
+[2024-05-26 06:37:15.18] Compiling echidna_tests.sol... Done! (0.549223916s)
+Multiple contracts found, only analyzing the first
+Analyzing contract: /home/training/src/echidna/BaseBlastManager.sol:BaseBlastManager
+echidna: No bytecode found for contract "/home/training/src/echidna/BaseBlastManager.sol:BaseBlastManager"
+ethsec@e934c081ac1f:/home/training/src/echidna$ 
+
+```
+
+
+Someone to help?
+
+
+[05/26/2024 06:38] donkicha
+Any ideas how to run it successfully are very appreciate!
+
+
+[05/26/2024 08:24] yotov721
+It says 
+> echidna: No bytecode found for contract "/home/training/src/echidna/BaseBlastManager.sol:BaseBlastManager"
+I haven't used echidna, but have you build the project contracts and are they in the directory specified in the error ?
+
+
+[05/26/2024 09:11] donkicha
+I am also learning Echidna. I am not sure the contracts are built. 
+
+Actually, in the workshop that I am following there is no such thing like building the contracts, before running Echidna....
+
+
+[05/26/2024 09:12] donkicha
+And also, I moved all of the files in the directory `echidna`, because otherwise the imports caused an errors.
+
+
+[05/26/2024 11:37] paprikrumplikas
+Will there be additional audit rounds with the other contracts of the protocol in scope?
+
+
+[05/26/2024 12:11] donkicha
+👀
+
+
+[05/26/2024 12:16] 0xinsanity
+the price feed isn’t essential to the protocol, it just needs to be updated weekly or biweekly or so.
+
+{Reactions}
+👍 (3) 
+
+[05/26/2024 12:17] 0xinsanity
+we are doing an audit for the other contracts with a different auditing firm
+
+
+[05/26/2024 14:32] souilos
+what is the MaxLockDuration in seconds or days?
+
+
+[05/26/2024 15:06] 0xakira1
+90 days
+
+
+[05/26/2024 15:06] souilos
+Thanks
+
+{Reactions}
+🤝 
+
+[05/26/2024 16:48] 0xarav
+do we know the approx minimum lockup duration ?
+
+
+[05/26/2024 16:50] dontonka
+in test i think it's 1 day.
+
+{Reactions}
+👍 
+
+[05/26/2024 16:51] 0xinsanity
+30 days
+
+
+[05/26/2024 16:51] 0xinsanity
+that’s just for testing
+
+{Reactions}
+👍 
+
+[05/26/2024 17:43] 0xarav
+Thanks
+
+
+[05/26/2024 20:57] paprikrumplikas
+Oh, sad to hear that. Would have been lovely if we got the opportunity to dig into the other contracts of the protocol
+
+
+[05/26/2024 21:01] 0xinsanity
+we’ll  consider it for future contracts we create depending on how well this one goes 🙂
+
+
+[05/27/2024 03:32] .nnez
+Hey @0xinsanity.
+Could you look at my inquiry in the private thread?
+
+
+[05/27/2024 12:54] 0xinsanity
+answered
+
+
+[05/27/2024 12:59] 0xinsanity
+Hey guys, getting a lot of questions about whether we support tokens of >18 decimals. i think that was a mistake when filling the form, we have no intention of supporting tokens >18 decimals
+
+
+[05/27/2024 13:14] aslanbekaibimov
+@0xinsanity what about rebasing and fee on transfer tokens? Do you intend to support them, or was it a mistake as well?
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/image-2737B.png
+
+
+[05/27/2024 13:47] mctoady
+bot report has a fee on transfer breaking accounting finding anyway if that saves you writing a report
+
+{Reactions}
+🔥 👍 (2) 
+
+[05/27/2024 14:43] maushish
+not many folks are participating in this one?
+
+
+[05/27/2024 14:47] 0xinsanity
+Mistake
+
+{Reactions}
+👍 (2) 
+
+[05/27/2024 14:49] mrpotatomagic
+@0xinsanity please check private thread
+
+
+[05/27/2024 16:33] paprikrumplikas
+Why do you think so?
+
+
+[05/27/2024 16:46] evokid
+unless you find an impact that not mentioned in the bot report, reminder.
+
+
+[05/27/2024 17:06] maushish
+its my first C4A contest
+
+
+[05/27/2024 17:06] maushish
+people said that 100s of people participate
+
+
+[05/27/2024 17:16] evokid
+doesn't matter, do your work! good luck.
+
+
+[05/27/2024 17:23] rouhsamad
+since its the only active contest (non-invitational) that just started, i think it should have high number of participates
+anyways, the submissions count will be out in 2.5 hours
+
+
+[05/27/2024 18:16] maushish
+just submitted all of my findings
+
+{Reactions}
+🔥 (3) 
+
+[05/27/2024 18:16] maushish
+Yes ser
+
+
+[05/27/2024 18:57] mosharaf
+is blast's mempool  private ? or just as ethreum's ?
+
+{Reactions}
+💜 
+
+[05/27/2024 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺Wardens The **Munchables **audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Feel free to ping a Civics-Admin if you have questions along the way!
+
+
+[05/27/2024 20:14] yiamat
+How many findings submitted?
+
+
+[05/27/2024 20:14] volokinn
+findings repo is not yet ready
+
+
+[05/27/2024 20:34] volokinn
+575
+
+
+[05/27/2024 20:38] yotov721
+I see 77
+
+
+[05/27/2024 20:42] rouhsamad
+How many submissions finaly?
+
+
+[05/27/2024 20:48] yotov721
+575 in validation repo and 77 in finding repo. Take in mind that there is no issue that is in both repos so 575 + 77 = **652**
+
+
+[05/27/2024 21:10] rouhsamad
+what is the different between this two repos? is this a new thing?
+
+
+[05/27/2024 21:11] rouhsamad
+i dont have backstage role, so i can't see
+
+
+[05/27/2024 21:15] dontonka
+652 is the gran total. Not all will make it to the findings repo, they must be deemed sufficiently quality by the Validator to make it there.
+
+
+[05/27/2024 21:27] yotov721
+I think so. It's from the new update that adds Validators to judging
+
+
+[05/27/2024 21:50] rouhsamad
+Interesting
+
+
+[05/27/2024 22:08] dontonka
+yes this is brand new from few contests now.
+
+{Reactions}
+👍 
+
+[05/28/2024 00:13] maushish
+So its my first contest it would be great if someone can answer these specific questions:
+- How does judging works after the contest
+- whats the procedure to tackle judge on some issue (ex- severity was lowered)
+
+
+[05/28/2024 02:28] xterminate69
+-A judge basically judges what the scouts have deemed legit/appropriate and then lowers or upgrades a report based on what he thinks.  
+- Give an extra PoC or an extra explanation and maybe it will be upgraded.
+
+
+[05/28/2024 03:09] maushish
+So is there a way where I can see my finding's current status?
+Like a GitHub repo with all the issues
+
+
+[05/28/2024 03:10] maushish
+If not then how will I know that judges want me to submit a POC for particular finding?
+
+
+[05/28/2024 07:17] prapandey031
+For this, you would need the SR role
+
+
+[05/28/2024 07:21] prapandey031
+More details here:
+https://docs.code4rena.com/roles/certified-contributors/sr-backstage-wardens
+
+{Embed}
+https://docs.code4rena.com/roles/certified-contributors/sr-backstage-wardens
+Security Researcher role (formerly +backstage wardens) | Code4rena
+
+
+[05/28/2024 11:57] snake_eaterr148
+where is this info from
+
+
+[05/28/2024 12:15] snake_eaterr148
+Oh yeah SR role
+
+{Reactions}
+👍 
+
+[05/28/2024 12:35] snake_eaterr148
+How long does it usually take for the results to get published
+
+
+[05/28/2024 13:58] dontonka
+depends on contest, but 2-4 weeks is the norm (depending on how many findings etc) I think, but can go longer
+
+
+[05/28/2024 16:55] xterminate69
+Zksync was 3 months
+
+
+[05/28/2024 16:57] snake_eaterr148
+Munchables scope was s single source file, so I imagine it won't take that long
+
+
+[05/28/2024 17:02] xterminate69
+2 weeks minimum i would say
+
+
+[05/28/2024 17:02] dontonka
+yes. that was the highest pot in C4 history and a lot of submissions, so the most complex one. that would be the worst case scenario, but that's extreme and not the norm. I think 2-5 weeks is a good range usually, again depending on the pot size, submission, complexity, etc
+
+
+[05/28/2024 17:04] xterminate69
+The problem is that there a lot of invalid reports on these small projects.
+
+
+[05/28/2024 17:04] xterminate69
+most of the time
+
+
+[05/28/2024 17:04] dontonka
+yes i know, that is annoying, for everyone, judge, warden that want their payout fast etc.
+
+
+[05/28/2024 17:05] dontonka
+if i compare with Arbiturm, much longer contest, and not even 400 submission. much complex one too in term of code base.
+
+
+[05/28/2024 17:05] xterminate69
+I mean there are some reports that dont even have an explanation but some wich are more comlex and require good understnding these are the ones that slow projects down
+
+
+[05/28/2024 17:06] xterminate69
+i dont get people that submit an unexplained report
+
+
+[05/28/2024 17:06] snake_eaterr148
+Earlier in the messages some people said there are 77 submissions in findings repo, and 575 in validation repo. What is validation repo?
+
+
+[05/28/2024 17:06] dontonka
+we all started somewhere, there is a learning curve for new warden that is a burden on everyone else 😄
+
+{Reactions}
+🫡 
+
+[05/28/2024 17:08] xterminate69
+Agreed but not submitting false reports, i found a lot of invalid reports in sherlock but when someone is a noob or someone is lazy that is pretty understandable.
+
+
+[05/28/2024 17:11] dontonka
+> Agreed but not submitting false reports
+It's not always in bad faith, sometimes the warden really believe in his claim, but without providing a coded PoC he fools himself and might even fool the judge.
+
+
+[05/28/2024 17:13] dontonka
+Platforms are not all the same either, for example on Cantina I think the level of SR is a little higher (since not everyone can join, you need an invite) and accuracy increase overall, so let's spam overall.
+
+
+[05/29/2024 02:30] xterminate69
+Lol has it ever happened fooling the judge?
+
+
+[05/29/2024 12:04] coffiasd
+What’s the sr role
+
+
+[05/29/2024 12:20] 0xshaheen
+The Backstage Role
+
+{Reactions}
+✅ 
+
+[05/29/2024 14:17] coffiasd
+I submitted some reports but the number of submissions is much greater than I expected 😂
+
+
+[05/29/2024 18:28] t1moh
+Of course it happened and not once (I won't provide example)
+
+{Reactions}
+☝️ 
+
+[05/30/2024 06:07] xterminate69
+There were a lot of QA's that the bots did not find
+
+{Reactions}
+✅ 
+
+[05/30/2024 15:58] snake_eaterr148
+Any news on the results?
+
+
+[05/30/2024 16:02] pfapostol
+So early?! Judging probably hasn't even started yet. ask in 3-4 weeks.
+
+{Reactions}
+❤️ 
+
+[06/01/2024 23:14] poeaudits
+I've seen a valid ERC20 transfer reentrancy, so sometmes I guess.
+
+
+[06/02/2024 13:06] iwildsniperi
+this would be custom then not pure standard, implementing a hook
+
+
+[06/03/2024 09:51] akatabletos
+Any update on PJQA?
+
+
+[06/03/2024 09:52] rouhsamad
+is judging already done?
+
+
+[06/03/2024 11:33] pfapostol
+no
+
+
+[06/03/2024 16:14] laxmiprasad
+Can we have any estimates on the results ?
+
+
+[06/03/2024 16:39] volokinn
+https://tenor.com/view/cat-driving-serious-cat-driving-hold-on-gif-16076083
+
+{Embed}
+https://tenor.com/view/cat-driving-serious-cat-driving-hold-on-gif-16076083
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/cat-driving-serious-D9732.png
+
+{Reactions}
+😅 (4) 🔥 (2) 
+
+[06/04/2024 16:30] snake_eaterr148
+What about now lol
+
+
+[06/05/2024 12:51] amarfares
+try again in 2 weeks
+
+{Reactions}
+😂 4739_Skeletor (2) 
+
+[06/05/2024 21:24] octeezy
+``` vm.warp(block.timestamp + 2 weeks) ```
+What about now?
+:4739_Skeletor:
+
+{Reactions}
+this (6) 😂 (6) 
+
+[06/06/2024 04:29] _3doc_
+:noddinggoat: be in the present 🧘
+
+
+[06/06/2024 04:31] akatabletos
+sir, what is the current situation? Is PJQA ongoing?
+
+
+[06/06/2024 04:33] _3doc_
+Yup 👍
+
+
+[06/06/2024 04:34] akatabletos
+what is the approximate timing of result?
+
+
+[06/06/2024 04:36] _3doc_
+Always hard to predict, maybe a week/10 days from now?
+
+
+[06/06/2024 04:36] _3doc_
+(it’s not me judging this contest btw 😅)
+
+
+[06/09/2024 09:36] akatabletos
+hi what is the backstage condition?
+
+
+[06/09/2024 17:15] snake_eaterr148
+Yeah hope someone can give insight into the situation
+
+
+[06/10/2024 01:02] mctoady
+https://tenor.com/view/just-wait-wait-for-it-be-patient-tom-hanks-gif-16909247
+
+{Embed}
+https://tenor.com/view/just-wait-wait-for-it-be-patient-tom-hanks-gif-16909247
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/just-wait-wait-for-it-D1FCA.png
+
+{Reactions}
+😂 
+
+[06/11/2024 16:58] buggsy__
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+
+{Embed}
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/waiting-waiting-patiently-C8F8A.png
+
+{Reactions}
+😂 
+
+[06/11/2024 20:29] sp1cymeatball
+Alrighty boys, it's schnibbling time!
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/badge-69E24.png
+
+
+[06/11/2024 20:58] rouhsamad
+wen
+
+
+[06/12/2024 00:49] dots999
+https://tenor.com/view/popcat-wen-gif-23885304
+
+{Embed}
+https://tenor.com/view/popcat-wen-gif-23885304
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/popcat-wen-0C105.png
+
+
+[06/12/2024 00:49] dvrkzy999
+https://tenor.com/view/sasuke-thinking-anime-naruto-gif-13593873
+
+{Embed}
+https://tenor.com/view/sasuke-thinking-anime-naruto-gif-13593873
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/sasuke-thinking-77B83.png
+
+
+[06/12/2024 08:35] devpelz
+wen 2 cents😭😂
+
+
+[06/12/2024 09:39] xterminate69
+https://tenor.com/view/space-nation-spacenationol-spacenationolnft-gif-5697587515974543331
+
+{Embed}
+https://tenor.com/view/space-nation-spacenationol-spacenationolnft-gif-5697587515974543331
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/space-nation-spacenationol-9ACBD.png
+
+
+[06/12/2024 15:11] jovi6132
+Pretty soon, pjqa was finished yesterday
+
+
+[06/12/2024 15:37] akatabletos
+https://tenor.com/view/when-you-attending-to-your-crush-wedding-sangeet-akashykumar-dance-crying-sad-gif-17108219294645205070
+
+{Embed}
+https://tenor.com/view/when-you-attending-to-your-crush-wedding-sangeet-akashykumar-dance-crying-sad-gif-17108219294645205070
+when you attending to your crush wedding sangeet.gif
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/when-you-attending-to-your-crush-wedding-s-D8F74.png
+
+{Reactions}
+🤣 
+
+[06/12/2024 16:22] akatabletos
+do u mean all escalations were resolved ?
+
+
+[06/12/2024 16:29] bigsam0831
+yes. very soon
+
+
+[06/12/2024 17:56] snake_eaterr148
+https://tenor.com/view/happy-happy-happy-happy-happy-cat-happy-dancing-cat-gif-716006509349864265
+
+{Embed}
+https://tenor.com/view/happy-happy-happy-happy-happy-cat-happy-dancing-cat-gif-716006509349864265
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/happy-happy-happy-happy-6EDD9.png
+
+
+[06/12/2024 22:41] itsmetechjay
+🤑 🎉  Awards for **Munchables**:
+
+$10,161.57 USDC » @SpicyMeatball 
+$1,695.86 USDC » @joaovwfreire 
+$1,171.08 USDC » @PTolev 
+$900.83 USDC » @bearonbike 
+$823.83 USDC » @araj 
+$516.00 USDC » @MrPotatoMagic 
+$450.42 USDC » @Drynooo 
+$173.87 USDC » @merlinboii 
+$136.43 USDC » @Walter 
+$136.43 USDC » @Bauchibred 
+$28.83 USDC » @dhank 
+$28.83 USDC » @Utsav 
+$28.82 USDC » @Limbooo 
+$28.82 USDC » @rsam_eth 
+$28.82 USDC » @0xhacksmithh 
+$28.82 USDC » @Varun_05 
+$28.81 USDC » @audinarey 
+$28.81 USDC » @AvantGard 
+$28.81 USDC » @SovaSlava 
+$28.81 USDC » @Stormreckson⛈ 
+$28.81 USDC » @sandy 
+$28.80 USDC » DPS (@0xJaeger and @yvuchev) 
+$28.80 USDC » @Haipls 
+$28.80 USDC » @HaliPot 
+$28.80 USDC » @shaflow2 
+$0.03 USDC » @adam-idarrha 
+$0.03 USDC » @trachev 
+$0.03 USDC » @0xdice91 
+$0.03 USDC » @Bigsam 
+$0.03 USDC » @aslanbek 
+$0.03 USDC » @Dots 
+$0.03 USDC » @carrotsmuggler 
+$0.03 USDC » @Sabit 
+$0.03 USDC » @crypticdefense 
+$0.03 USDC » @eeyore 
+$0.03 USDC » @Tychai0s 
+$0.03 USDC » @pfapostol 
+$0.03 USDC » @Swizz 
+$0.03 USDC » @0xleadwizard 
+$0.03 USDC » @Mahmud 
+$0.03 USDC » @leegh 
+$0.03 USDC » @mitko1111 
+$0.03 USDC » @prapandey031 
+$0.03 USDC » @xyz 
+$0.02 USDC » @0xbug 
+$0.02 USDC » @iamandreiski 
+$0.02 USDC » @robertodf99 
+$0.02 USDC » @0xAadi 
+$0.02 USDC » @evokid 
+$0.02 USDC » @edger 
+$0.02 USDC » @twcctop 
+$0.02 USDC » @tedox 
+$0.02 USDC » EPSec (@0x539.eth and @PeterSR) 
+$0.02 USDC » @0rpse 
+$0.02 USDC » @0xMosh 
+$0.02 USDC » @ayden 
+$0.02 USDC » @turvy_fuzz 
+$0.02 USDC » @zhaojohnson
+$0.01 USDC » @AgileJune 
+$0.01 USDC » @Bbash 
+$0.01 USDC » @Beosin 
+$0.01 USDC » EaglesSecurity (@kane-goldmisth and @julian_avantgarde) 
+$0.01 USDC » @John_Femi 
+$0.01 USDC » @!0xRotiTelur 
+$0.01 USDC » @Rushkov_Boyan 
+$0.01 USDC » Sentryx (@flacko and @buggsy)
+
+{Reactions}
+🔥 (2) 🌶️ 
+
+[06/12/2024 22:41] itsmetechjay
+$0.01 USDC » @Topmark 
+$0.01 USDC » @ZdravkoHr 
+$0.01 USDC » @avoloder 
+$0.01 USDC » @Brevis 
+$0.01 USDC » @djanerch 
+$0.01 USDC » @0xfalconHoof 
+$0.01 USDC » @typicalHuman 
+$0.01 USDC » @triverse 
+$0.01 USDC » @0xblack_bird 
+$0.01 USDC » @fyamf 
+$0.01 USDC » @jasonxiale 
+$0.01 USDC » @Janio 
+$0.01 USDC » @Lin 
+$0.01 USDC » @Stefanov 
+$0.01 USDC » @0xbeWater0Given 
+$0.01 USDC » @gavfu 
+$0.01 USDC » @akatabletos 
+$0.01 USDC » @n4nika 
+$0.01 USDC » @stakog 
+$0.01 USDC » @steadyman 
+$0.01 USDC » @th3l1ghtd3m0n 
+$0.01 USDC » @yashgoel72 
+$0.01 USDC » @0xmystery 
+$0.01 USDC » @myd8418 
+$0.01 USDC » @Saediek 
+$0.01 USDC » @ahmedaghadi 
+$0.01 USDC » @c0pp3rscr3w3r 
+$0.01 USDC » @ke1caM 
+$0.01 USDC » @snake eater 
+$0.01 USDC » brgltd  
+$0.01 USDC » @pamprikrumplikas 
+$0.01 USDC » Circolors (@irreverent.eth and @McToady) 
+$0.01 USDC » @0x175 
+$0.01 USDC » 0xHash 
+$0.01 USDC » @0xfox 
+$0.01 USDC » @0xloscar01 
+$0.01 USDC » @Deleted User 
+$0.01 USDC » @Kaysoft 
+$0.01 USDC » @King_ 
+$0.01 USDC » @PENGUN 
+$0.01 USDC » @The Fabled 
+$0.01 USDC » @bctester 
+$0.01 USDC » @amar 
+$0.01 USDC » @fandonov 
+$0.01 USDC » @grearlake 
+$0.01 USDC » @ilchovski 
+$0.01 USDC » @m4ttm 
+$0.01 USDC » @NiSeR 
+$0.01 USDC » @nnez 
+$0.01 USDC » @octeezy 
+$0.01 USDC » @Oxchsyston 
+$0.01 USDC » @yotov721 
+
+🏁 Findings summary
+--------------------------------------—
+High risk findings: 2 unique (133 total)
+Med risk findings: 4 unique (80 total)
+QA reports: 7 (Best: MrPotatoMagic)
+Top Hunter: SpicyMeatball
+Top Gatherers: joaovwfreire, araj
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+
+[06/12/2024 23:20] rouhsamad
+Sum of all rewards should be 20,000$ right?
+
+
+[06/12/2024 23:30] itsmetechjay
+The HM + QA awards would equal $16,600. The full breakdown of the award pool is in the [audit repo](https://github.com/code-423n4/2024-05-munchables?tab=readme-ov-file#munchables-audit-details).
+
+{Embed}
+https://github.com/code-423n4/2024-05-munchables?tab=readme-ov-file
+GitHub - code-423n4/2024-05-munchables
+Contribute to code-423n4/2024-05-munchables development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/021ae13a-1040-4787-8ea1-b753980a4a28-8E9CB
+
+{Reactions}
+👍 
+
+[06/13/2024 00:39] dontonka
+Yes this is something you need to be aware, not all platform has the same behavior in this regards. In C4, the pot announced `is never` the pot that will go to wardens, as Judge/Validator etc are deducted from there. As opposed to Cantina as for example, the pot announced is what wardens get. I don't know other platform. It's a matter of knowing this detail properly.
+
+
+[06/13/2024 05:29] amarfares
+I think they clearly state what are the awards for wardens’ H/M 🤨
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/IMG_1930-3E740.png
+
+
+[06/13/2024 05:57] sp1cymeatball
+gg
+
+{Reactions}
+🔥 (12) hi5 (3) 🌶️ (4) 🍝 (3) 
+
+[06/13/2024 06:06] 0xshaheen
+Man you are too good, found HMs in contests that were running parallel :4739_Skeletor:
+
+{Reactions}
+hi5 
+
+[06/13/2024 06:11] volokinn
+Congrats to @SpicyMeatball , @joaovwfreire , @PTolev and the rest of you guys.
+
+{Reactions}
+hi5 (4) 
+
+[06/13/2024 19:56] mylifechangefast.eth_70767
+@zhaojohnson came twice👀😏
+
+
+[06/13/2024 21:36] sovaslava9
+@Jay | C4  ☝️
+
+
+[06/13/2024 21:44] itsmetechjay
+thank you! copying error.
+
+{Reactions}
+👍 
+
+[06/14/2024 02:42] gosentry
+Hi，Where can I see historical transactions on the chain?
+
+
+[06/14/2024 03:59] 0xshaheen
+looks like rewards are not sent yet. Keep your eyes on the #📢・c4-updates channel, when this contests rewards will be sent, it will be announced there
+
+{Reactions}
+thankyou 
+
+[06/14/2024 04:34] gosentry
+Thank you
+but I don't see any other completed audit history transfer records in the ⁠📢・c4-updates
+
+
+[06/14/2024 06:40] prapandey031
+https://discord.com/channels/810916927919620096/810929015509483554/1247406342814175365
+
+See this for an example
+
+
+[06/14/2024 11:20] snake_eaterr148
+When will the reports be out?
+
+
+[06/18/2024 07:48] paprikrumplikas
+Won 💪$0.01
+
+{Reactions}
+🔥 (4) 
+
+[06/21/2024 19:51] itsmetechjay
+ℹ️ This channel is pending archive.   As a result, any private threads will be permanently deleted on Friday, 28 June 2024. Please make sure to grab anything you might need before then.
+
+
+[06/24/2024 15:45] typicalhuman
+@Jay | C4 , Hi, I know that it's not possible to do anything after audit is already done, but I'm just curious is there any ability for me to check my invalid reports? because I've just double checked my notes in code and I found out that I actually wrote a report for a bug that was marked as HIGH in final report, but my report was rejected (I know that screenshot won't prove anything :), but my goal is to check what did I do wrong in report writing just to make sure not to make this mistake in the future
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2024 - munchables-may22 [1242163386058276985].txt_Files/image-7528C.png
+
+
+[06/24/2024 17:48] yasminee.
+https://github.com/code-423n4/2024-05-munchables-findings 
+look for your username here
+
+
+[06/24/2024 18:06] typicalhuman
+Don't see any for some reason
+
+
+[06/24/2024 18:08] yasminee.
+You didn't find your username in data file ?
+
+
+[06/24/2024 18:10] typicalhuman
+oh, my bad, found it, thanks a lot
+
+{Reactions}
+❤️ 
+
+[06/24/2024 19:03] .tedox
+Also a similar question, I have reported an issue as low-risk but it turned out to be a medium and my finding was invalidated. Does it happen like this usually when you misjudge your finding or it was just an unlucky turn of events?
+
+
+[06/24/2024 19:17] yasminee.
+I think your report was invalidated, but it doesn't relate to the severity. You can ask here #❓・questions  for a more suitable response
+
+
+[06/27/2024 22:54] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 266 message(s)
+==============================================================

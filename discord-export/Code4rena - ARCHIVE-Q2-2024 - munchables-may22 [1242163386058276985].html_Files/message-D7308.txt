@@ -1,0 +1,90 @@
+Hey guys!
+
+I wrote a test for the `approveUSDPrice` price, but it reverts at the `setUp` function:
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.25;
+
+import {console} from "forge-std/console.sol";
+import "forge-std/Vm.sol";
+import "../interfaces/ILockManager.sol";
+import "../managers/LockManager.sol";
+import "../config/BaseConfigStorage.sol";
+import {Test} from "forge-std/Test.sol";
+
+contract LockManagerTest is Test {
+    LockManager lockManager;
+
+    ILockManager.Lockdrop public lockdrop;
+
+    struct USDUpdateProposal {
+        address proposer;
+        uint256 proposedPrice;
+        uint256 approvalsCount;
+        mapping(address => uint256) approvals;
+    }
+
+    USDUpdateProposal public usdUpdateProposal;
+    uint256 private _usdProposalId = 1;
+    uint256 private constant APPROVE_THRESHOLD = 3;
+
+    address proposer = address(0x1);
+    address approver1 = address(0x2);
+    address approver2 = address(0x3);
+    address approver3 = address(0x4);
+
+    enum Role {PriceFeed_1, PriceFeed_2, PriceFeed_3, PriceFeed_4, PriceFeed_5}
+
+    function setUp() public {
+        lockManager = new LockManager(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
+
+        // Initialize the proposal
+        usdUpdateProposal.proposer = proposer;
+        usdUpdateProposal.proposedPrice = 100;
+    }
+
+    function test_ApproveUSDPrice() public {
+        // Initial conditions
+        uint256 _price = 100;
+        usdUpdateProposal.approvals[approver1] = 0;
+        usdUpdateProposal.approvals[approver2] = 0;
+        usdUpdateProposal.approvals[approver3] = 0;
+
+        // Set caller to approver1
+        vm.startPrank(approver1);
+        // Call the function
+        lockManager.approveUSDPrice(_price);
+        vm.stopPrank();
+
+        // Check that the approval was recorded
+        assertEq(usdUpdateProposal.approvals[approver1], _usdProposalId, "Proposal should be approved by approver1");
+        assertEq(usdUpdateProposal.approvalsCount, 1, "Approvals count should be 1");
+
+        // Set caller to approver2
+        vm.startPrank(approver2);
+        // Call the function
+        lockManager.approveUSDPrice(_price);
+        vm.stopPrank();
+
+        // Check that the approval was recorded
+        assertEq(usdUpdateProposal.approvals[approver2], _usdProposalId, "Proposal should be approved by approver2");
+        assertEq(usdUpdateProposal.approvalsCount, 2, "Approvals count should be 2");
+
+        // Set caller to approver3
+        vm.startPrank(approver3);
+        // Call the function
+        lockManager.approveUSDPrice(_price);
+        vm.stopPrank();
+
+        // Check that the approval was recorded and threshold was met
+        assertEq(usdUpdateProposal.approvals[approver3], _usdProposalId, "Proposal should be approved by approver3");
+        assertEq(usdUpdateProposal.approvalsCount, 3, "Approvals count should be 3");
+
+        // Check that the USD price update was executed
+        // This requires the _execUSDPriceUpdate to have some observable side effect or state change
+        // assertTrue(someConditionThatChecksExecution, "USD price update should be executed");
+    }
+
+}
+
+```
